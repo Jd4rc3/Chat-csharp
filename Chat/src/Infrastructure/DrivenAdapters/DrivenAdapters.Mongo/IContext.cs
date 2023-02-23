@@ -11,6 +11,6 @@ namespace DrivenAdapters.Mongo
         /// <summary>
         /// Colleccion de Tipo Contrato
         /// </summary>
-        public IMongoCollection<Entity> TipoContrato { get; }
+        public IMongoCollection<UsuarioEntity> Usuarios { get; }
     }
 }

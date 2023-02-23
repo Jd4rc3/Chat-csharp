@@ -23,9 +23,6 @@ namespace DrivenAdapters.Mongo
             _database = _mongoClient.GetDatabase(databaseName);
         }
 
-        /// <summary>
-        /// Tipo Contrato Entity
-        /// </summary>
-        public IMongoCollection<Entity> TipoContrato => _database.GetCollection<Entity>("TipoContrato");
+        public IMongoCollection<UsuarioEntity> Usuarios => _database.GetCollection<UsuarioEntity>("Usuarios");
     }
 }

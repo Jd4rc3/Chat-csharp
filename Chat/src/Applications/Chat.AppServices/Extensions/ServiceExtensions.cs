@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Chat.AppServices.Automapper;
 using StackExchange.Redis;
 using System;
+using Domain.UseCase;
 
 namespace Chat.AppServices.Extensions
 {
@@ -102,12 +103,14 @@ namespace Chat.AppServices.Extensions
             #region Adaptadores
 
             services.AddScoped<ITestEntityRepository, EntityAdapter>();
+            services.AddScoped<ISignUp, SignUp>();
 
             #endregion Adaptadores
 
             #region UseCases
 
             services.AddScoped<IManageEventsUseCase, ManageEventsUseCase>();
+            services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
 
             #endregion UseCases
 

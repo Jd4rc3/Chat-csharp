@@ -1,8 +1,9 @@
-﻿using credinet.comun.api;
+﻿using Chat.AppServices.Extensions;
+using Chat.AppServices.Extensions.Health;
+using credinet.comun.api;
 using credinet.comun.api.Swagger.Extensions;
 using credinet.exception.middleware;
 using Helpers.ObjectsUtils;
-using Helpers.ObjectsUtils.Setting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -11,8 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.PlatformAbstractions;
 using SC.Configuration.Provider.Mongo;
-using Chat.AppServices.Extensions;
-using Chat.AppServices.Extensions.Health;
 using Serilog;
 using System.IO;
 using System.Linq;
@@ -25,9 +24,6 @@ builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonProvider();
 
-
-builder.Configuration.AddKeyVaultProvider();
-
 builder.Host.UseSerilog((ctx, lc) => lc
        .WriteTo.Console()
        .ReadFrom.Configuration(ctx.Configuration));
@@ -36,18 +32,15 @@ builder.Host.UseSerilog((ctx, lc) => lc
 
 builder.Services.Configure<ConfiguradorAppSettings>(builder.Configuration.GetRequiredSection(nameof(ConfiguradorAppSettings)));
 ConfiguradorAppSettings appSettings = builder.Configuration.GetSection(nameof(ConfiguradorAppSettings)).Get<ConfiguradorAppSettings>();
-Secrets secrets = builder.Configuration.ResolveSecrets<Secrets>();
+//Secrets secrets = builder.Configuration.ResolveSecrets<Secrets>();
 string country = EnvironmentHelper.GetCountryOrDefault(appSettings.DefaultCountry);
-
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Configuration.AddMongoProvider(
-    nameof(MongoConfigurationProvider), secrets.MongoConnection, country);
-
-
+    nameof(MongoConfigurationProvider), appSettings.MongoConnection, country);
 
 #region Service Configuration
 
@@ -55,9 +48,7 @@ string policyName = "cors";
 builder.Services
     .RegisterCors(policyName)
     .RegisterAutoMapper()
-    .RegisterMongo(secrets.MongoConnection, $"{appSettings.Database}_{country}")
-    .RegisterBlobstorage(secrets.StorageConnection, appSettings.StorageContainerName)
-    .RegisterRedis(secrets.RedisConnection, 0)
+    .RegisterMongo(appSettings.MongoConnection, $"{appSettings.Database}_{country}")
     .RegisterAutoMapper()
     .RegisterServices()
     .AddVersionedApiExplorer()
@@ -68,7 +59,7 @@ builder.Services
 
 builder.Services
     .AddHealthChecks()
-    .AddMongoDb(secrets.MongoConnection, name: "MongoDB");
+    .AddMongoDb(appSettings.MongoConnection, name: "MongoDB");
 
 #endregion Service Configuration
 

@@ -25,19 +25,6 @@ namespace Chat.AppServices.Extensions
                     .AddJsonFile("config/appsettings.json", optional: true, reloadOnChange: true);
 
         /// <summary>
-        /// Adds the key vault provider.
-        /// </summary>
-        /// <param name="configuration">The configuration.</param>
-        /// <returns></returns>
-        public static IConfigurationBuilder AddKeyVaultProvider(this ConfigurationManager configuration)
-        {
-            AzureKeyVaultConfig settings = new();
-            configuration.GetSection(nameof(AzureKeyVaultConfig)).Bind(settings);
-            configuration.AddAzureKeyVault(new AzureKeyVaultConfigurationOptions(settings.KeyVault, settings.AppId, settings.AppSecret));
-            return configuration;
-        }
-
-        /// <summary>
         ///   Agrega Mongo como proveedor de configuración.
         /// </summary>
         /// <param name="configuration">configuration.</param>

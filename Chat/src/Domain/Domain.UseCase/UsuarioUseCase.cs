@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Domain.UseCase
 {
-    internal class UsuarioUseCase : IUsuarioUseCase
+    public class UsuarioUseCase : IUsuarioUseCase
     {
         private readonly ISignUp _signUp;
         private readonly IOptions<ConfiguradorAppSettings> _configuracion;
@@ -49,7 +49,7 @@ namespace Domain.UseCase
                 audience: "localhost",
                 claims, expires: expiracion, signingCredentials: credenciales
                 );
-            return new { Token = token };
+            return new { Token = new JwtSecurityTokenHandler().WriteToken(token) };
         }
     }
 }

@@ -79,5 +79,10 @@ namespace Helpers.ObjectsUtils
         ///
         /// </summary>
         public string ApplicationName { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string MongoConnection { get; set; }
     }
 }

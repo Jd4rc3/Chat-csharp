@@ -69,5 +69,15 @@ namespace Helpers.ObjectsUtils
         /// The instancias redis.
         /// </value>
         public SettingInstanciaRedis InstanciasRedis { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string KeyJWT { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public string ApplicationName { get; set; }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
-using Domain.Model.Entities;
+﻿using Domain.Model.Entities;
+using System;
+using System.Threading.Tasks;
 
 namespace Domain.UseCase
 {
     public interface IUsuarioUseCase
     {
-        Task<Usuario> RegistrarUsuario(Usuario nuevoUsuario);
+        Task<Object> RegistrarUsuario(Usuario nuevoUsuario);
     }
 }

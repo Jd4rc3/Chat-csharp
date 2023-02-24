@@ -24,20 +24,20 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     static UsuarioReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRQcm90b3MvVXN1YXJpby5wcm90bxIHdXN1YXJpbyJBCg1TaWduVXBSZXF1",
-            "ZXN0Eg4KBk5vbWJyZRgCIAEoCRIOCgZDb3JyZW8YAyABKAkSEAoIUGFzc3dv",
-            "cmQYBCABKAkiMQoNU2lnbklwUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSEAoI",
-            "UGFzc3dvcmQYBCABKAkiOQoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRIN",
-            "CgVUb2tlbhgCIAEoCRINCgVFcnJvchgDIAEoCDJ6Cg5Vc3VhcmlvU2Vydmlj",
-            "ZRIzCgZTaWduVXASFi51c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3Vhcmlv",
-            "LlJlc3BvbnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbklwUmVxdWVzdBoR",
-            "LnVzdWFyaW8uUmVzcG9uc2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Q",
-            "cm90b3NiBnByb3RvMw=="));
+            "ChRQcm90b3MvVXN1YXJpby5wcm90bxIHdXN1YXJpbyI+Cg1TaWduVXBSZXF1",
+            "ZXN0Eg4KBk5vbWJyZRgCIAEoCRIOCgZDb3JyZW8YAyABKAkSDQoFQ2xhdmUY",
+            "BCABKAkiLgoNU2lnbklwUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSDQoFQ2xh",
+            "dmUYBCABKAkiOQoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRINCgVUb2tl",
+            "bhgCIAEoCRINCgVFcnJvchgDIAEoCDJ6Cg5Vc3VhcmlvU2VydmljZRIzCgZT",
+            "aWduVXASFi51c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3VhcmlvLlJlc3Bv",
+            "bnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbklwUmVxdWVzdBoRLnVzdWFy",
+            "aW8uUmVzcG9uc2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Qcm90b3Ni",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest.Parser, new[]{ "Nombre", "Correo", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest.Parser, new[]{ "Correo", "Password" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest.Parser, new[]{ "Nombre", "Correo", "Clave" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest.Parser, new[]{ "Correo", "Clave" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.Response), global::EntryPoints.Grpc.Dtos.Protos.Response.Parser, new[]{ "Message", "Token", "Error" }, null, null, null, null)
           }));
     }
@@ -81,7 +81,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     public SignUpRequest(SignUpRequest other) : this() {
       nombre_ = other.nombre_;
       correo_ = other.correo_;
-      password_ = other.password_;
+      clave_ = other.clave_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -115,15 +115,15 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
     }
 
-    /// <summary>Field number for the "Password" field.</summary>
-    public const int PasswordFieldNumber = 4;
-    private string password_ = "";
+    /// <summary>Field number for the "Clave" field.</summary>
+    public const int ClaveFieldNumber = 4;
+    private string clave_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Password {
-      get { return password_; }
+    public string Clave {
+      get { return clave_; }
       set {
-        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clave_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -144,7 +144,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
       if (Nombre != other.Nombre) return false;
       if (Correo != other.Correo) return false;
-      if (Password != other.Password) return false;
+      if (Clave != other.Clave) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -154,7 +154,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       int hash = 1;
       if (Nombre.Length != 0) hash ^= Nombre.GetHashCode();
       if (Correo.Length != 0) hash ^= Correo.GetHashCode();
-      if (Password.Length != 0) hash ^= Password.GetHashCode();
+      if (Clave.Length != 0) hash ^= Clave.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,9 +181,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(26);
         output.WriteString(Correo);
       }
-      if (Password.Length != 0) {
+      if (Clave.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Password);
+        output.WriteString(Clave);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -203,9 +203,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(26);
         output.WriteString(Correo);
       }
-      if (Password.Length != 0) {
+      if (Clave.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Password);
+        output.WriteString(Clave);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -223,8 +223,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (Correo.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Correo);
       }
-      if (Password.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
+      if (Clave.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Clave);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -244,8 +244,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (other.Correo.Length != 0) {
         Correo = other.Correo;
       }
-      if (other.Password.Length != 0) {
-        Password = other.Password;
+      if (other.Clave.Length != 0) {
+        Clave = other.Clave;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -271,7 +271,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             break;
           }
           case 34: {
-            Password = input.ReadString();
+            Clave = input.ReadString();
             break;
           }
         }
@@ -298,7 +298,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             break;
           }
           case 34: {
-            Password = input.ReadString();
+            Clave = input.ReadString();
             break;
           }
         }
@@ -343,7 +343,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SignIpRequest(SignIpRequest other) : this() {
       correo_ = other.correo_;
-      password_ = other.password_;
+      clave_ = other.clave_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -365,15 +365,15 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
     }
 
-    /// <summary>Field number for the "Password" field.</summary>
-    public const int PasswordFieldNumber = 4;
-    private string password_ = "";
+    /// <summary>Field number for the "Clave" field.</summary>
+    public const int ClaveFieldNumber = 4;
+    private string clave_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Password {
-      get { return password_; }
+    public string Clave {
+      get { return clave_; }
       set {
-        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clave_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -393,7 +393,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         return true;
       }
       if (Correo != other.Correo) return false;
-      if (Password != other.Password) return false;
+      if (Clave != other.Clave) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -402,7 +402,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     public override int GetHashCode() {
       int hash = 1;
       if (Correo.Length != 0) hash ^= Correo.GetHashCode();
-      if (Password.Length != 0) hash ^= Password.GetHashCode();
+      if (Clave.Length != 0) hash ^= Clave.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -425,9 +425,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(26);
         output.WriteString(Correo);
       }
-      if (Password.Length != 0) {
+      if (Clave.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Password);
+        output.WriteString(Clave);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -443,9 +443,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(26);
         output.WriteString(Correo);
       }
-      if (Password.Length != 0) {
+      if (Clave.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(Password);
+        output.WriteString(Clave);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -460,8 +460,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (Correo.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Correo);
       }
-      if (Password.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
+      if (Clave.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Clave);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -478,8 +478,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (other.Correo.Length != 0) {
         Correo = other.Correo;
       }
-      if (other.Password.Length != 0) {
-        Password = other.Password;
+      if (other.Clave.Length != 0) {
+        Clave = other.Clave;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -501,7 +501,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             break;
           }
           case 34: {
-            Password = input.ReadString();
+            Clave = input.ReadString();
             break;
           }
         }
@@ -524,7 +524,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             break;
           }
           case 34: {
-            Password = input.ReadString();
+            Clave = input.ReadString();
             break;
           }
         }

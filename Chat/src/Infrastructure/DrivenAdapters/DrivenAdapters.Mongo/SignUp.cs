@@ -27,9 +27,15 @@ namespace DrivenAdapters.Mongo
             }
 
             var nuevoUsuario = _mapper.Map<UsuarioEntity>(usuario);
+            nuevoUsuario.Clave = HashPassword(usuario.Clave);
             await _collection.InsertOneAsync(nuevoUsuario);
 
             return _mapper.Map<Usuario>(nuevoUsuario);
+        }
+
+        private string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
         private async Task<UsuarioEntity> ObtenerUsuario(string email)

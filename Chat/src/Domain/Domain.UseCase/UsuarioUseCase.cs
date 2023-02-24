@@ -33,11 +33,11 @@ namespace Domain.UseCase
 
         private Token GenerarToken(Usuario usuario)
         {
-            List<Claim> claims = new List<Claim>()
+            List<Claim> claims = new()
             {
-                new ("correo", usuario.Correo),
-                new ("nombre", usuario.Nombre),
-                new ("id", usuario.Id),
+                new Claim("correo", usuario.Correo),
+                new Claim("nombre", usuario.Nombre),
+                new Claim("id", usuario.Id),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuracion.Value.KeyJWT));

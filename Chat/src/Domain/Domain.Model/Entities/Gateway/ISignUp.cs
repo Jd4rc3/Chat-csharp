@@ -6,6 +6,6 @@ namespace Domain.Model.Entities.Gateway
 {
     public interface ISignUp
     {
-        Task<Usuario> registrar(Usuario usuario);
+        Task<Usuario> Registrar(Usuario usuario);
     }
 }

@@ -32,4 +32,7 @@
     <ProjectReference Include="..\..\Infrastructure\Helpers\Helpers.ObjectsUtils\Helpers.ObjectsUtils.csproj" />
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
 </Project>

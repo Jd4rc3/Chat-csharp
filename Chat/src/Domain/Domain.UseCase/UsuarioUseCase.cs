@@ -26,7 +26,7 @@ namespace Domain.UseCase
 
         public async Task<Object> RegistrarUsuario(Usuario nuevoUsuario)
         {
-            var usuarioRegistrado = await _signUp.registrar(nuevoUsuario);
+            var usuarioRegistrado = await _signUp.Registrar(nuevoUsuario);
             var token = GenerarToken(usuarioRegistrado);
 
             return token;

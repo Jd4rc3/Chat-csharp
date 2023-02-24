@@ -16,7 +16,7 @@ namespace DrivenAdapters.Mongo
             _collection = context.Usuarios;
         }
 
-        public async Task<Usuario> registrar(Usuario usuario)
+        public async Task<Usuario> Registrar(Usuario usuario)
         {
             if (await ObtenerUsuario(usuario.Correo) != null)
             {

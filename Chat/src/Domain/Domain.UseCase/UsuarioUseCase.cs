@@ -14,18 +14,24 @@ namespace Domain.UseCase
 {
     public class UsuarioUseCase : IUsuarioUseCase
     {
-        private readonly ISignUp _signUp;
+        private readonly IAuth _auth;
         private readonly IOptions<ConfiguradorAppSettings> _configuracion;
 
-        public UsuarioUseCase(ISignUp signUp, IOptions<ConfiguradorAppSettings> configuracio)
+        public UsuarioUseCase(IAuth auth, IOptions<ConfiguradorAppSettings> configuracio)
         {
-            _signUp = signUp;
+            _auth = auth;
             _configuracion = configuracio;
+        }
+
+        public async Task<Token> IniciarSesion(Usuario usuario)
+        {
+            var usuarioVerificado = await _auth.IniciarSesion(usuario);
+            return GenerarToken(usuarioVerificado);
         }
 
         public async Task<Token> RegistrarUsuario(Usuario nuevoUsuario)
         {
-            var usuarioRegistrado = await _signUp.Registrar(nuevoUsuario);
+            var usuarioRegistrado = await _auth.Registrar(nuevoUsuario);
             var token = GenerarToken(usuarioRegistrado);
 
             return token;
@@ -33,11 +39,11 @@ namespace Domain.UseCase
 
         private Token GenerarToken(Usuario usuario)
         {
-            List<Claim> claims = new List<Claim>()
+            List<Claim> claims = new()
             {
-                new ("correo", usuario.Correo),
-                new ("nombre", usuario.Nombre),
-                new ("id", usuario.Id),
+                new Claim("correo", usuario.Correo),
+                new Claim("nombre", usuario.Nombre),
+                new Claim("id", usuario.Id),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuracion.Value.KeyJWT));

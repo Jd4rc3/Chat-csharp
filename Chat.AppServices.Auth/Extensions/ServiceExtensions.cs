@@ -80,7 +80,7 @@ namespace Chat.AppServices.Auth.Extensions
 
             services.AddScoped<IManageEventsUseCase, ManageEventsUseCase>();
             services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
-            services.AddScoped<ISignUp, SignUp>();
+            services.AddScoped<IAuth, AuthAdapter>();
 
             return services;
         }

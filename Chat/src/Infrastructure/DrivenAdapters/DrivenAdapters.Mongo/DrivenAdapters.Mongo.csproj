@@ -15,6 +15,7 @@
     <PackageReference Include="AutoMapper" Version="$(AutoMapper)" />
     <PackageReference Include="AutoMapper.Data" Version="$(AutoMapperData)" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="$(AutoMapperExtensionsMicrosoftDependencyInjection)" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="credinet-exception-middleware" Version="$(credinetexceptionmiddleware)" />
     <PackageReference Include="credinet.comun.api.core3" Version="$(credinetcomunapicore3)" />
     <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="$(MicrosoftExtensionsConfigurationAzureKeyVault)" />

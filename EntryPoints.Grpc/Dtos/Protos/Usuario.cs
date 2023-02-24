@@ -26,18 +26,18 @@ namespace EntryPoints.Grpc.Dtos.Protos {
           string.Concat(
             "ChRQcm90b3MvVXN1YXJpby5wcm90bxIHdXN1YXJpbyI+Cg1TaWduVXBSZXF1",
             "ZXN0Eg4KBk5vbWJyZRgCIAEoCRIOCgZDb3JyZW8YAyABKAkSDQoFQ2xhdmUY",
-            "BCABKAkiLgoNU2lnbklwUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSDQoFQ2xh",
+            "BCABKAkiLgoNU2lnbkluUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSDQoFQ2xh",
             "dmUYBCABKAkiOQoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRINCgVUb2tl",
             "bhgCIAEoCRINCgVFcnJvchgDIAEoCDJ6Cg5Vc3VhcmlvU2VydmljZRIzCgZT",
             "aWduVXASFi51c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3VhcmlvLlJlc3Bv",
-            "bnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbklwUmVxdWVzdBoRLnVzdWFy",
+            "bnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbkluUmVxdWVzdBoRLnVzdWFy",
             "aW8uUmVzcG9uc2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Qcm90b3Ni",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest.Parser, new[]{ "Nombre", "Correo", "Clave" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest.Parser, new[]{ "Correo", "Clave" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest), global::EntryPoints.Grpc.Dtos.Protos.SignInRequest.Parser, new[]{ "Correo", "Clave" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.Response), global::EntryPoints.Grpc.Dtos.Protos.Response.Parser, new[]{ "Message", "Token", "Error" }, null, null, null, null)
           }));
     }
@@ -308,16 +308,16 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
   }
 
-  public sealed partial class SignIpRequest : pb::IMessage<SignIpRequest>
+  public sealed partial class SignInRequest : pb::IMessage<SignInRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<SignIpRequest> _parser = new pb::MessageParser<SignIpRequest>(() => new SignIpRequest());
+    private static readonly pb::MessageParser<SignInRequest> _parser = new pb::MessageParser<SignInRequest>(() => new SignInRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<SignIpRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<SignInRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -333,7 +333,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SignIpRequest() {
+    public SignInRequest() {
       OnConstruction();
     }
 
@@ -341,7 +341,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SignIpRequest(SignIpRequest other) : this() {
+    public SignInRequest(SignInRequest other) : this() {
       correo_ = other.correo_;
       clave_ = other.clave_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -349,8 +349,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SignIpRequest Clone() {
-      return new SignIpRequest(this);
+    public SignInRequest Clone() {
+      return new SignInRequest(this);
     }
 
     /// <summary>Field number for the "Correo" field.</summary>
@@ -380,12 +380,12 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as SignIpRequest);
+      return Equals(other as SignInRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(SignIpRequest other) {
+    public bool Equals(SignInRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -471,7 +471,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(SignIpRequest other) {
+    public void MergeFrom(SignInRequest other) {
       if (other == null) {
         return;
       }

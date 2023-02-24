@@ -50,7 +50,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::EntryPoints.Grpc.Dtos.Protos.Response> __Marshaller_usuario_Response = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::EntryPoints.Grpc.Dtos.Protos.Response.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest> __Marshaller_usuario_SignIpRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest.Parser));
+    static readonly grpc::Marshaller<global::EntryPoints.Grpc.Dtos.Protos.SignInRequest> __Marshaller_usuario_SignInRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::EntryPoints.Grpc.Dtos.Protos.SignInRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response> __Method_SignUp = new grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(
@@ -61,11 +61,11 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         __Marshaller_usuario_Response);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response> __Method_SignIn = new grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(
+    static readonly grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignInRequest, global::EntryPoints.Grpc.Dtos.Protos.Response> __Method_SignIn = new grpc::Method<global::EntryPoints.Grpc.Dtos.Protos.SignInRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SignIn",
-        __Marshaller_usuario_SignIpRequest,
+        __Marshaller_usuario_SignInRequest,
         __Marshaller_usuario_Response);
 
     /// <summary>Service descriptor</summary>
@@ -85,7 +85,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::EntryPoints.Grpc.Dtos.Protos.Response> SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::EntryPoints.Grpc.Dtos.Protos.Response> SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -140,22 +140,22 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         return CallInvoker.AsyncUnaryCall(__Method_SignUp, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::EntryPoints.Grpc.Dtos.Protos.Response SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::EntryPoints.Grpc.Dtos.Protos.Response SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SignIn(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::EntryPoints.Grpc.Dtos.Protos.Response SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest request, grpc::CallOptions options)
+      public virtual global::EntryPoints.Grpc.Dtos.Protos.Response SignIn(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_SignIn, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::EntryPoints.Grpc.Dtos.Protos.Response> SignInAsync(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::EntryPoints.Grpc.Dtos.Protos.Response> SignInAsync(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return SignInAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::EntryPoints.Grpc.Dtos.Protos.Response> SignInAsync(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::EntryPoints.Grpc.Dtos.Protos.Response> SignInAsync(global::EntryPoints.Grpc.Dtos.Protos.SignInRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SignIn, null, options, request);
       }
@@ -185,7 +185,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UsuarioServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_SignUp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(serviceImpl.SignUp));
-      serviceBinder.AddMethod(__Method_SignIn, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(serviceImpl.SignIn));
+      serviceBinder.AddMethod(__Method_SignIn, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::EntryPoints.Grpc.Dtos.Protos.SignInRequest, global::EntryPoints.Grpc.Dtos.Protos.Response>(serviceImpl.SignIn));
     }
 
   }

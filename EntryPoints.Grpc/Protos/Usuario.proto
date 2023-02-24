@@ -6,7 +6,7 @@ option csharp_namespace = "EntryPoints.Grpc.Dtos.Protos";
 
 service UsuarioService {
   rpc SignUp (SignUpRequest) returns (Response);
-  rpc SignIn (SignIpRequest) returns (Response);
+  rpc SignIn (SignInRequest) returns (Response);
 }
 
 message SignUpRequest {
@@ -14,7 +14,7 @@ message SignUpRequest {
 	string Correo =3;
 	string Clave = 4;
 }
-message SignIpRequest {
+message SignInRequest {
 	string Correo =3;
 	string Clave = 4;
 }

@@ -83,7 +83,7 @@ namespace Chat.AppServices.Extensions
 
             #region Adaptadores
 
-            services.AddScoped<ISignUp, SignUp>();
+            services.AddScoped<IAuth, AuthAdapter>();
 
             #endregion Adaptadores
 

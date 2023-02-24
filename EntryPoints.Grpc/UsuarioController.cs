@@ -27,7 +27,17 @@ namespace EntryPoints.Grpc
             {
                 var token = await _usuarioUseCase.RegistrarUsuario(_mapper.Map<Usuario>(request));
 
-                return new Response() { Token = token.AccesToken, Error = false, Message = "" };
+                return new Response() { Token = token.AccesToken, Error = false, Message = "Acceso autorizado" };
+            }, _eventsUseCase);
+        }
+
+        public override async Task<Response> SignIn(SignInRequest request, ServerCallContext context)
+        {
+            return await HandleRequest<SignInRequest>(async () =>
+            {
+                var token = await _usuarioUseCase.IniciarSesion(_mapper.Map<Usuario>(request));
+
+                return new Response() { Token = token.AccesToken, Error = false, Message = "Acceso autorizado" };
             }, _eventsUseCase);
         }
     }

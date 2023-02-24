@@ -17,6 +17,7 @@ namespace Chat.AppServices.Auth.Automapper
         {
             CreateMap<SignUpRequest, Usuario>().ReverseMap();
             CreateMap<Usuario, UsuarioEntity>().ReverseMap();
+            CreateMap<SignInRequest, Usuario>().ReverseMap();
         }
     }
 }

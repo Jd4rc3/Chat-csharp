@@ -1,9 +1,12 @@
 ﻿using AutoMapper.Data;
+using Calzolari.Grpc.AspNetCore.Validation;
 using Chat.AppServices.Auth.Automapper;
 using Domain.Model.Entities.Gateway;
 using Domain.UseCase;
 using Domain.UseCase.Common;
 using DrivenAdapters.Mongo;
+using EntryPoints.Grpc.Validations;
+using FluentValidation;
 
 namespace Chat.AppServices.Auth.Extensions
 {
@@ -36,6 +39,12 @@ namespace Chat.AppServices.Auth.Extensions
             {
                 cfg.AddDataReaderMapping();
             }, typeof(ConfigurationProfile));
+
+        public static IServiceCollection FluentValidation(this IServiceCollection services)
+        {
+            services.AddValidatorsFromAssemblyContaining<SignUpValidation>();
+            return services;
+        }
 
         /// <summary>
         /// Método para Registrar Mongo

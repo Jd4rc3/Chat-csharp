@@ -1,8 +1,9 @@
-﻿using Chat.AppServices.Auth.Extensions;
+﻿using Calzolari.Grpc.AspNetCore.Validation;
+using Chat.AppServices.Auth.Extensions;
 using EntryPoints.Grpc;
+using FluentValidation.AspNetCore;
 using Helpers.ObjectsUtils;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using SC.Configuration.Provider.Mongo;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -29,15 +30,24 @@ builder.Services.AddSwaggerGen();
 
 #region Service Configuration
 
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
 string policyName = "cors";
 builder.Services
     .RegisterCors(policyName)
     .RegisterAutoMapper()
     .RegisterServices()
     .RegisterMongo(appSettings.MongoConnection, $"{appSettings.Database}_{country}")
-    .AddVersionedApiExplorer();
+    .AddVersionedApiExplorer()
+    .FluentValidation();
 
-builder.Services.AddGrpc();
+builder.Services.AddGrpc(opt =>
+{
+    opt.EnableMessageValidation();
+});
+builder.Services.AddGrpcValidation();
+
 builder.Services
     .AddHealthChecks();
 

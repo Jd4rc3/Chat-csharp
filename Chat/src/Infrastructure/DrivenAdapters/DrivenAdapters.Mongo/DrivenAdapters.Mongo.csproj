@@ -30,8 +30,6 @@
   <ProjectReference Include="..\..\Helpers\Helpers.ObjectsUtils\Helpers.ObjectsUtils.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entities\Entity.cs"></None>
-    <None Include="Entities\EntityAdapter.cs"></None>
     <None Include="Context.cs"></None>
   </ItemGroup>
 </Project>

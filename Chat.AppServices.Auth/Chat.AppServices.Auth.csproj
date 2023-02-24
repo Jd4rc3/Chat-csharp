@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+	<ItemGroup>
+      <PackageReference Include="AutoMapper.Data" Version="$(AutoMapperData)" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="$(AutoMapperExtensionsMicrosoftDependencyInjection)" />
+      <PackageReference Include="SC.Configuration.Provider.Mongo" Version="1.0.40329" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Chat\src\Domain\Domain.Model\Domain.Model.csproj" />
+	  <ProjectReference Include="..\Chat\src\Domain\Domain.UseCase\Domain.UseCase.csproj" />
+	  <ProjectReference Include="..\Chat\src\Infrastructure\DrivenAdapters\DrivenAdapters.Mongo\DrivenAdapters.Mongo.csproj" />
+	  <ProjectReference Include="..\EntryPoints.Grpc\EntryPoints.Grpc.csproj" />
+
+      <PackageReference Include="Serilog" Version="$(Serilog)" />
+      <PackageReference Include="Serilog.AspNetCore" Version="$(SerilogAspNetCore)" />
+      <PackageReference Include="Serilog.Enrichers.Span" Version="$(SerilogEnrichersSpan)" />
+      <PackageReference Include="Serilog.Extensions.Hosting" Version="$(SerilogExtensionsHosting)" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsole)" />
+	</ItemGroup>
+
+</Project>

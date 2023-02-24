@@ -12,7 +12,6 @@
     <DocumentationFile>bin\Release\$(NetCoreTargetVersion)\Domain.Entities.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Entities\Gateway\ITestEntityRepository.cs"></None>
     <None Include="Entities\Entity.cs"></None>
   </ItemGroup>
   <ItemGroup>

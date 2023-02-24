@@ -1,16 +1,12 @@
 ﻿using AutoMapper.Data;
+using Chat.AppServices.Automapper;
 using credinet.comun.api;
 using Domain.Model.Entities.Gateway;
-using Domain.Model.Interfaces;
-using Domain.UseCase.Common;
-using DrivenAdapter.Files;
+using Domain.UseCase;
 using DrivenAdapters.Mongo;
-using DrivenAdapters.Mongo.Entities;
 using Microsoft.Extensions.DependencyInjection;
-using Chat.AppServices.Automapper;
 using StackExchange.Redis;
 using System;
-using Domain.UseCase;
 
 namespace Chat.AppServices.Extensions
 {
@@ -34,7 +30,7 @@ namespace Chat.AppServices.Extensions
             }));
 
         /// <summary>
-        /// Método para registrar AutoMapper
+        /// Método para Registrar AutoMapper
         /// </summary>
         /// <param name="services">The services.</param>
         /// <returns></returns>
@@ -45,7 +41,7 @@ namespace Chat.AppServices.Extensions
             }, typeof(ConfigurationProfile));
 
         /// <summary>
-        /// Método para registrar Mongo
+        /// Método para Registrar Mongo
         /// </summary>
         /// <param name="services">services.</param>
         /// <param name="connectionString">connection string.</param>
@@ -55,22 +51,7 @@ namespace Chat.AppServices.Extensions
                                     services.AddSingleton<IContext>(provider => new Context(connectionString, db));
 
         /// <summary>
-        /// Registro del blobstorage
-        /// </summary>
-        /// <param name="services">Contenedor de servicios</param>
-        /// <param name="connectionString">cadena de conexion del storage</param>
-        /// <param name="containerName">nombre del contenedor del storage</param>
-        /// <returns></returns>
-        public static IServiceCollection RegisterBlobstorage(this IServiceCollection services, string connectionString, string containerName)
-        {
-            //Blob storage
-            //TODO: Buscar si existe mejor implementacion de la DI
-            services.AddSingleton<IBlobStorage>(provider => new BlobStorage(containerName, connectionString));
-            return services;
-        }
-
-        /// <summary>
-        ///   Método para registrar Redis Cache
+        ///   Método para Registrar Redis Cache
         /// </summary>
         /// <param name="services">services.</param>
         /// <param name="connectionString">connection string.</param>
@@ -88,7 +69,7 @@ namespace Chat.AppServices.Extensions
         }
 
         /// <summary>
-        /// Método para registrar los servicios
+        /// Método para Registrar los servicios
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
@@ -102,14 +83,12 @@ namespace Chat.AppServices.Extensions
 
             #region Adaptadores
 
-            services.AddScoped<ITestEntityRepository, EntityAdapter>();
             services.AddScoped<ISignUp, SignUp>();
 
             #endregion Adaptadores
 
             #region UseCases
 
-            services.AddScoped<IManageEventsUseCase, ManageEventsUseCase>();
             services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
 
             #endregion UseCases

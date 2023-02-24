@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+
+package usuario;
+
+option csharp_namespace = "EntryPoints.Grpc.Dtos.Protos";
+
+service UsuarioService {
+  rpc SignUp (SignUpRequest) returns (Response);
+  rpc SignIn (SignIpRequest) returns (Response);
+}
+
+message SignUpRequest {
+	string Nombre = 2;
+	string Correo =3;
+	string Password = 4;
+}
+message SignIpRequest {
+	string Correo =3;
+	string Password = 4;
+}
+
+message Response {
+  string Message = 1;
+  string Token = 2;
+  bool Error = 3;
+}

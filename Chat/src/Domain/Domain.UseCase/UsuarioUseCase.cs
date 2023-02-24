@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,21 +23,21 @@ namespace Domain.UseCase
             _configuracion = configuracio;
         }
 
-        public async Task<Object> RegistrarUsuario(Usuario nuevoUsuario)
+        public async Task<Token> RegistrarUsuario(Usuario nuevoUsuario)
         {
-            var usuarioRegistrado = await _signUp.registrar(nuevoUsuario);
+            var usuarioRegistrado = await _signUp.Registrar(nuevoUsuario);
             var token = GenerarToken(usuarioRegistrado);
 
             return token;
         }
 
-        private Object GenerarToken(Usuario usuario)
+        private Token GenerarToken(Usuario usuario)
         {
             List<Claim> claims = new List<Claim>()
             {
-                new Claim("correo", usuario.Correo),
-                new Claim("nombre", usuario.Nombre),
-                new Claim("id", usuario.Id),
+                new ("correo", usuario.Correo),
+                new ("nombre", usuario.Nombre),
+                new ("id", usuario.Id),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuracion.Value.KeyJWT));
@@ -49,7 +48,7 @@ namespace Domain.UseCase
                 audience: "localhost",
                 claims, expires: expiracion, signingCredentials: credenciales
                 );
-            return new { Token = new JwtSecurityTokenHandler().WriteToken(token) };
+            return new Token() { AccesToken = new JwtSecurityTokenHandler().WriteToken(token) };
         }
     }
 }

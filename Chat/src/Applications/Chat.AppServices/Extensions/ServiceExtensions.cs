@@ -2,9 +2,7 @@
 using Chat.AppServices.Automapper;
 using credinet.comun.api;
 using Domain.Model.Entities.Gateway;
-using Domain.Model.Interfaces;
 using Domain.UseCase;
-using DrivenAdapter.Files;
 using DrivenAdapters.Mongo;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
@@ -51,21 +49,6 @@ namespace Chat.AppServices.Extensions
         /// <returns></returns>
         public static IServiceCollection RegisterMongo(this IServiceCollection services, string connectionString, string db) =>
                                     services.AddSingleton<IContext>(provider => new Context(connectionString, db));
-
-        /// <summary>
-        /// Registro del blobstorage
-        /// </summary>
-        /// <param name="services">Contenedor de servicios</param>
-        /// <param name="connectionString">cadena de conexion del storage</param>
-        /// <param name="containerName">nombre del contenedor del storage</param>
-        /// <returns></returns>
-        public static IServiceCollection RegisterBlobstorage(this IServiceCollection services, string connectionString, string containerName)
-        {
-            //Blob storage
-            //TODO: Buscar si existe mejor implementacion de la DI
-            services.AddSingleton<IBlobStorage>(provider => new BlobStorage(containerName, connectionString));
-            return services;
-        }
 
         /// <summary>
         ///   Método para Registrar Redis Cache

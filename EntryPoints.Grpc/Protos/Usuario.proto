@@ -22,4 +22,5 @@ message SignIpRequest {
 message Response {
   string Message = 1;
   string Token = 2;
+  bool Error = 3;
 }

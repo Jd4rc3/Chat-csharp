@@ -8,7 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
-	  <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)Dtos/"/> 
+	  <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)Dtos/" /> 
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chat\src\Domain\Domain.UseCase\Domain.UseCase.csproj" />
   </ItemGroup>
 
 </Project>

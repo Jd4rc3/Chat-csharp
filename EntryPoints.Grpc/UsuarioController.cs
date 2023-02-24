@@ -1,13 +1,34 @@
-﻿using EntryPoints.Grpc.Dtos.Protos;
+﻿using AutoMapper;
+using Domain.Model.Entities;
+using Domain.UseCase;
+using Domain.UseCase.Common;
+using EntryPoints.Grpc.Dtos.Protos;
+using static EntryPoints.Grpc.Extensions.GrpcServiceHandler;
 using Grpc.Core;
 
 namespace EntryPoints.Grpc
 {
     public class UsuarioController : UsuarioService.UsuarioServiceBase
     {
-        public override Task<Response> SignUp(SignUpRequest request, ServerCallContext context)
+        private readonly IManageEventsUseCase _eventsUseCase;
+        private readonly IUsuarioUseCase _usuarioUseCase;
+        private readonly IMapper _mapper;
+
+        public UsuarioController(IManageEventsUseCase eventsUseCase, IUsuarioUseCase usuarioUseCase, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _eventsUseCase = eventsUseCase;
+            _usuarioUseCase = usuarioUseCase;
+            _mapper = mapper;
+        }
+
+        public override async Task<Response> SignUp(SignUpRequest request, ServerCallContext context)
+        {
+            return await HandleRequest<SignUpRequest>(async () =>
+            {
+                var token = await _usuarioUseCase.RegistrarUsuario(_mapper.Map<Usuario>(request));
+
+                return new Response() { Token = token.AccesToken, Error = false, Message = "" };
+            }, _eventsUseCase);
         }
     }
 }

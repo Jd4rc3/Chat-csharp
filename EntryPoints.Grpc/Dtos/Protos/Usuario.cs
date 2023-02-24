@@ -27,17 +27,18 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             "ChRQcm90b3MvVXN1YXJpby5wcm90bxIHdXN1YXJpbyJBCg1TaWduVXBSZXF1",
             "ZXN0Eg4KBk5vbWJyZRgCIAEoCRIOCgZDb3JyZW8YAyABKAkSEAoIUGFzc3dv",
             "cmQYBCABKAkiMQoNU2lnbklwUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSEAoI",
-            "UGFzc3dvcmQYBCABKAkiKgoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRIN",
-            "CgVUb2tlbhgCIAEoCTJ6Cg5Vc3VhcmlvU2VydmljZRIzCgZTaWduVXASFi51",
-            "c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3VhcmlvLlJlc3BvbnNlEjMKBlNp",
-            "Z25JbhIWLnVzdWFyaW8uU2lnbklwUmVxdWVzdBoRLnVzdWFyaW8uUmVzcG9u",
-            "c2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Qcm90b3NiBnByb3RvMw=="));
+            "UGFzc3dvcmQYBCABKAkiOQoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRIN",
+            "CgVUb2tlbhgCIAEoCRINCgVFcnJvchgDIAEoCDJ6Cg5Vc3VhcmlvU2Vydmlj",
+            "ZRIzCgZTaWduVXASFi51c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3Vhcmlv",
+            "LlJlc3BvbnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbklwUmVxdWVzdBoR",
+            "LnVzdWFyaW8uUmVzcG9uc2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Q",
+            "cm90b3NiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignUpRequest.Parser, new[]{ "Nombre", "Correo", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest), global::EntryPoints.Grpc.Dtos.Protos.SignIpRequest.Parser, new[]{ "Correo", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.Response), global::EntryPoints.Grpc.Dtos.Protos.Response.Parser, new[]{ "Message", "Token" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::EntryPoints.Grpc.Dtos.Protos.Response), global::EntryPoints.Grpc.Dtos.Protos.Response.Parser, new[]{ "Message", "Token", "Error" }, null, null, null, null)
           }));
     }
     #endregion
@@ -569,6 +570,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     public Response(Response other) : this() {
       message_ = other.message_;
       token_ = other.token_;
+      error_ = other.error_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -602,6 +604,18 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
     }
 
+    /// <summary>Field number for the "Error" field.</summary>
+    public const int ErrorFieldNumber = 3;
+    private bool error_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -619,6 +633,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
       if (Message != other.Message) return false;
       if (Token != other.Token) return false;
+      if (Error != other.Error) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -628,6 +643,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       int hash = 1;
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Token.Length != 0) hash ^= Token.GetHashCode();
+      if (Error != false) hash ^= Error.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -654,6 +670,10 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(18);
         output.WriteString(Token);
       }
+      if (Error != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Error);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -672,6 +692,10 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(18);
         output.WriteString(Token);
       }
+      if (Error != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Error);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -687,6 +711,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
       if (Token.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
+      }
+      if (Error != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -705,6 +732,9 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
       if (other.Token.Length != 0) {
         Token = other.Token;
+      }
+      if (other.Error != false) {
+        Error = other.Error;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -729,6 +759,10 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             Token = input.ReadString();
             break;
           }
+          case 24: {
+            Error = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -750,6 +784,10 @@ namespace EntryPoints.Grpc.Dtos.Protos {
           }
           case 18: {
             Token = input.ReadString();
+            break;
+          }
+          case 24: {
+            Error = input.ReadBool();
             break;
           }
         }

@@ -6,6 +6,6 @@ namespace Domain.UseCase
 {
     public interface IUsuarioUseCase
     {
-        Task<Object> RegistrarUsuario(Usuario nuevoUsuario);
+        Task<Token> RegistrarUsuario(Usuario nuevoUsuario);
     }
 }

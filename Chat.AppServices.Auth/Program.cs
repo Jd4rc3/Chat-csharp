@@ -1,4 +1,5 @@
 ﻿using Chat.AppServices.Auth.Extensions;
+using EntryPoints.Grpc;
 using Helpers.ObjectsUtils;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using SC.Configuration.Provider.Mongo;
@@ -36,6 +37,7 @@ builder.Services
     .RegisterMongo(appSettings.MongoConnection, $"{appSettings.Database}_{country}")
     .AddVersionedApiExplorer();
 
+builder.Services.AddGrpc();
 builder.Services
     .AddHealthChecks();
 
@@ -46,5 +48,5 @@ WebApplication app = builder.Build();
 var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
 app.UseCors(policyName);
-app.UseHttpsRedirection();
+app.MapGrpcService<UsuarioController>();
 app.Run();

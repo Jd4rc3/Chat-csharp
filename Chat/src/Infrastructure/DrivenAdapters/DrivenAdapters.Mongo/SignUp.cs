@@ -4,15 +4,18 @@ using Domain.Model.Entities.Gateway;
 using DrivenAdapters.Mongo.Entities;
 using MongoDB.Driver;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace DrivenAdapters.Mongo
 {
     public class SignUp : ISignUp
     {
+        private readonly IMapper _mapper;
         private readonly IMongoCollection<UsuarioEntity> _collection;
 
-        public SignUp(IContext context)
+        public SignUp(IContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _collection = context.Usuarios;
         }
 
@@ -22,9 +25,11 @@ namespace DrivenAdapters.Mongo
             {
                 throw new BusinessException("Usuario se encuentra registrado", 400);
             }
-            await _collection.InsertOneAsync(new UsuarioEntity() { Correo = usuario.Correo, Nombre = usuario.Nombre });
 
-            return usuario;
+            var nuevoUsuario = _mapper.Map<UsuarioEntity>(usuario);
+            await _collection.InsertOneAsync(nuevoUsuario);
+
+            return _mapper.Map<Usuario>(nuevoUsuario);
         }
 
         private async Task<UsuarioEntity> ObtenerUsuario(string email)

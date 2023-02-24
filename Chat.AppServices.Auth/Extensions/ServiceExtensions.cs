@@ -1,5 +1,8 @@
 ﻿using AutoMapper.Data;
 using Chat.AppServices.Auth.Automapper;
+using Domain.Model.Entities.Gateway;
+using Domain.UseCase;
+using Domain.UseCase.Common;
 using DrivenAdapters.Mongo;
 
 namespace Chat.AppServices.Auth.Extensions
@@ -74,6 +77,10 @@ namespace Chat.AppServices.Auth.Extensions
             //services.AddScoped<ISignUp, SignUp>();
 
             #endregion Adaptadores
+
+            services.AddScoped<IManageEventsUseCase, ManageEventsUseCase>();
+            services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
+            services.AddScoped<ISignUp, SignUp>();
 
             return services;
         }

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Model.Entities;
+using DrivenAdapters.Mongo.Entities;
+using EntryPoints.Grpc.Dtos.Protos;
 
 namespace Chat.AppServices.Auth.Automapper
 {
@@ -13,6 +15,8 @@ namespace Chat.AppServices.Auth.Automapper
         /// </summary>
         public ConfigurationProfile()
         {
+            CreateMap<SignUpRequest, Usuario>().ReverseMap();
+            CreateMap<Usuario, UsuarioEntity>().ReverseMap();
         }
     }
 }

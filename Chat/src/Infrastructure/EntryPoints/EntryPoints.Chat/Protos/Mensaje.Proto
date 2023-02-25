@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "EntryPoints.Chat.Dtos.Protos";
+
+package chat;
+
+service ChatService {
+  rpc Enviar(Mensaje) returns (Mensaje);
+}
+
+message Mensaje {
+  string receptor = 2;
+  string cuerpo = 3;
+  string fecha = 4;
+}

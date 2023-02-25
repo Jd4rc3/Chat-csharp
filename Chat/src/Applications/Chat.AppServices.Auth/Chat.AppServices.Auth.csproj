@@ -14,16 +14,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Chat\src\Domain\Domain.Model\Domain.Model.csproj" />
-	  <ProjectReference Include="..\Chat\src\Domain\Domain.UseCase\Domain.UseCase.csproj" />
-	  <ProjectReference Include="..\Chat\src\Infrastructure\DrivenAdapters\DrivenAdapters.Mongo\DrivenAdapters.Mongo.csproj" />
-	  <ProjectReference Include="..\EntryPoints.Grpc\EntryPoints.Grpc.csproj" />
-
       <PackageReference Include="Serilog" Version="$(Serilog)" />
       <PackageReference Include="Serilog.AspNetCore" Version="$(SerilogAspNetCore)" />
       <PackageReference Include="Serilog.Enrichers.Span" Version="$(SerilogEnrichersSpan)" />
       <PackageReference Include="Serilog.Extensions.Hosting" Version="$(SerilogExtensionsHosting)" />
       <PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsole)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Infrastructure\DrivenAdapters\DrivenAdapters.Mongo\DrivenAdapters.Mongo.csproj" />
+	  <ProjectReference Include="..\..\Infrastructure\EntryPoints\EntryPoints.Grpc\EntryPoints.Grpc.csproj" />
 	</ItemGroup>
 
 </Project>

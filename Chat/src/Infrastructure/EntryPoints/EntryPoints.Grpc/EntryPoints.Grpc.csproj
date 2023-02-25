@@ -10,11 +10,10 @@
     <PackageReference Include="Calzolari.Grpc.AspNetCore.Validation" Version="6.2.0" />
 	  <PackageReference Include="Calzolari.Grpc.Net.Client.Validation" Version="6.2.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
-	  <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)Dtos/" /> 
+	  <Protobuf Include="**\Usuario.proto" OutputDir="%(RelativePath)Dtos/" /> 
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Chat\src\Domain\Domain.UseCase\Domain.UseCase.csproj" />
+    <ProjectReference Include="..\..\..\Domain\Domain.UseCase\Domain.UseCase.csproj" />
   </ItemGroup>
-
 </Project>

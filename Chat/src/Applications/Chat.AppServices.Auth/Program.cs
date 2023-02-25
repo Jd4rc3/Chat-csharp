@@ -25,9 +25,9 @@ ConfiguradorAppSettings appSettings =
     builder.Configuration.GetSection(nameof(ConfiguradorAppSettings)).Get<ConfiguradorAppSettings>();
 string country = EnvironmentHelper.GetCountryOrDefault(appSettings.DefaultCountry);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddControllers();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
 
 #region Service Configuration
 

@@ -1,5 +1,6 @@
 ﻿syntax = "proto3";
 
+
 package usuario;
 
 option csharp_namespace = "EntryPoints.Grpc.Dtos.Protos";
@@ -10,17 +11,17 @@ service UsuarioService {
 }
 
 message SignUpRequest {
-	string Nombre = 2;
-	string Correo =3;
-	string Clave = 4;
+  string Nombre = 2;
+  string Correo = 3;
+  string Clave = 4;
 }
 message SignInRequest {
-	string Correo =3;
-	string Clave = 4;
+  string Correo = 3;
+  string Clave = 4;
 }
 
 message Response {
   string Message = 1;
   string Token = 2;
-  bool Error = 3;
+  repeated string Error = 3;
 }

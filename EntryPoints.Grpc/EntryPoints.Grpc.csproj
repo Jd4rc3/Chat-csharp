@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Calzolari.Grpc.AspNetCore.Validation" Version="6.2.0" />
+	  <PackageReference Include="Calzolari.Grpc.Net.Client.Validation" Version="6.2.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
 	  <Protobuf Include="**/*.proto" OutputDir="%(RelativePath)Dtos/" /> 
   </ItemGroup>

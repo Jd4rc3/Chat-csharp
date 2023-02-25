@@ -19,7 +19,6 @@ public static class GrpcServiceHandler
         {
             return new Response()
             {
-                Error = true,
                 Message = e.Message,
                 Token = ""
             };

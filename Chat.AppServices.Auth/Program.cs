@@ -1,8 +1,8 @@
-﻿using Chat.AppServices.Auth.Extensions;
+﻿using Calzolari.Grpc.AspNetCore.Validation;
+using Chat.AppServices.Auth.Extensions;
 using EntryPoints.Grpc;
+using FluentValidation.AspNetCore;
 using Helpers.ObjectsUtils;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using SC.Configuration.Provider.Mongo;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -14,13 +14,15 @@ builder.Configuration
     .AddJsonProvider();
 
 builder.Host.UseSerilog((ctx, lc) => lc
-       .WriteTo.Console()
-       .ReadFrom.Configuration(ctx.Configuration));
+    .WriteTo.Console()
+    .ReadFrom.Configuration(ctx.Configuration));
 
 #endregion Host Configuration
 
-builder.Services.Configure<ConfiguradorAppSettings>(builder.Configuration.GetRequiredSection(nameof(ConfiguradorAppSettings)));
-ConfiguradorAppSettings appSettings = builder.Configuration.GetSection(nameof(ConfiguradorAppSettings)).Get<ConfiguradorAppSettings>();
+builder.Services.Configure<ConfiguradorAppSettings>(
+    builder.Configuration.GetRequiredSection(nameof(ConfiguradorAppSettings)));
+ConfiguradorAppSettings appSettings =
+    builder.Configuration.GetSection(nameof(ConfiguradorAppSettings)).Get<ConfiguradorAppSettings>();
 string country = EnvironmentHelper.GetCountryOrDefault(appSettings.DefaultCountry);
 
 builder.Services.AddControllers();
@@ -29,23 +31,31 @@ builder.Services.AddSwaggerGen();
 
 #region Service Configuration
 
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
 string policyName = "cors";
 builder.Services
     .RegisterCors(policyName)
     .RegisterAutoMapper()
     .RegisterServices()
     .RegisterMongo(appSettings.MongoConnection, $"{appSettings.Database}_{country}")
-    .AddVersionedApiExplorer();
+    .AddVersionedApiExplorer()
+    .FluentValidation();
 
-builder.Services.AddGrpc();
+builder.Services.AddGrpc(opt =>
+{
+    opt.EnableDetailedErrors = true;
+});
+
+builder.Services.AddGrpcValidation();
+
 builder.Services
     .AddHealthChecks();
 
 #endregion Service Configuration
 
 WebApplication app = builder.Build();
-
-var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
 app.UseCors(policyName);
 app.MapGrpcService<UsuarioController>();

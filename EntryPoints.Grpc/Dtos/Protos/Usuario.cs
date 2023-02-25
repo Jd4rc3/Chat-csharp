@@ -28,7 +28,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             "ZXN0Eg4KBk5vbWJyZRgCIAEoCRIOCgZDb3JyZW8YAyABKAkSDQoFQ2xhdmUY",
             "BCABKAkiLgoNU2lnbkluUmVxdWVzdBIOCgZDb3JyZW8YAyABKAkSDQoFQ2xh",
             "dmUYBCABKAkiOQoIUmVzcG9uc2USDwoHTWVzc2FnZRgBIAEoCRINCgVUb2tl",
-            "bhgCIAEoCRINCgVFcnJvchgDIAEoCDJ6Cg5Vc3VhcmlvU2VydmljZRIzCgZT",
+            "bhgCIAEoCRINCgVFcnJvchgDIAMoCTJ6Cg5Vc3VhcmlvU2VydmljZRIzCgZT",
             "aWduVXASFi51c3VhcmlvLlNpZ25VcFJlcXVlc3QaES51c3VhcmlvLlJlc3Bv",
             "bnNlEjMKBlNpZ25JbhIWLnVzdWFyaW8uU2lnbkluUmVxdWVzdBoRLnVzdWFy",
             "aW8uUmVzcG9uc2VCH6oCHEVudHJ5UG9pbnRzLkdycGMuRHRvcy5Qcm90b3Ni",
@@ -570,7 +570,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
     public Response(Response other) : this() {
       message_ = other.message_;
       token_ = other.token_;
-      error_ = other.error_;
+      error_ = other.error_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -606,14 +606,13 @@ namespace EntryPoints.Grpc.Dtos.Protos {
 
     /// <summary>Field number for the "Error" field.</summary>
     public const int ErrorFieldNumber = 3;
-    private bool error_;
+    private static readonly pb::FieldCodec<string> _repeated_error_codec
+        = pb::FieldCodec.ForString(26);
+    private readonly pbc::RepeatedField<string> error_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Error {
+    public pbc::RepeatedField<string> Error {
       get { return error_; }
-      set {
-        error_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -633,7 +632,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       }
       if (Message != other.Message) return false;
       if (Token != other.Token) return false;
-      if (Error != other.Error) return false;
+      if(!error_.Equals(other.error_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -643,7 +642,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       int hash = 1;
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Token.Length != 0) hash ^= Token.GetHashCode();
-      if (Error != false) hash ^= Error.GetHashCode();
+      hash ^= error_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -670,10 +669,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(18);
         output.WriteString(Token);
       }
-      if (Error != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(Error);
-      }
+      error_.WriteTo(output, _repeated_error_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -692,10 +688,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
         output.WriteRawTag(18);
         output.WriteString(Token);
       }
-      if (Error != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(Error);
-      }
+      error_.WriteTo(ref output, _repeated_error_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -712,9 +705,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (Token.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
       }
-      if (Error != false) {
-        size += 1 + 1;
-      }
+      size += error_.CalculateSize(_repeated_error_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -733,9 +724,7 @@ namespace EntryPoints.Grpc.Dtos.Protos {
       if (other.Token.Length != 0) {
         Token = other.Token;
       }
-      if (other.Error != false) {
-        Error = other.Error;
-      }
+      error_.Add(other.error_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -759,8 +748,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             Token = input.ReadString();
             break;
           }
-          case 24: {
-            Error = input.ReadBool();
+          case 26: {
+            error_.AddEntriesFrom(input, _repeated_error_codec);
             break;
           }
         }
@@ -786,8 +775,8 @@ namespace EntryPoints.Grpc.Dtos.Protos {
             Token = input.ReadString();
             break;
           }
-          case 24: {
-            Error = input.ReadBool();
+          case 26: {
+            error_.AddEntriesFrom(ref input, _repeated_error_codec);
             break;
           }
         }

@@ -37,7 +37,7 @@ namespace DrivenAdapters.Mongo
         {
             var usuarioEntity = await ObtenerUsuarioPorEmail(usuario.Correo);
             if (usuarioEntity is null)
-                throw new BusinessException($"El usuario con correo {usuario.Correo} mo se encuentra registrado", 400);
+                throw new BusinessException($"El usuario con correo {usuario.Correo} no se encuentra registrado", 400);
             if (!VerifyPassword(usuario.Clave, usuarioEntity.Clave))
                 throw new BusinessException("Usuario o contraseña incorectos", 401);
 
